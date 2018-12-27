@@ -19,13 +19,13 @@ class Application
       if @@cart.length > 0
         @@cart.each {|item| resp.write "#{item}\n"}
       else
-        resp.write "Cart is currently empty"
+        resp.write "Your cart is empty"
       end
     elsif req.path.match(/add/)
       add_term = req.params["item"]
       if handle_search(add_term) == "#{add_term} is one of our items"
         @@cart << add_term
-        resp.write "#{add_term} added to cart"
+        resp.write "#{add_term}"
       else
         resp.write "#{add_term} not found"
       end
